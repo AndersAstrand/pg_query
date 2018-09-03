@@ -44,6 +44,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   pg_query!
@@ -53,4 +54,4 @@ DEPENDENCIES
   rubocop-rspec (= 1.15.1)
 
 BUNDLED WITH
-   1.16.1
+   1.16.4

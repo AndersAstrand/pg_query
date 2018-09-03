@@ -19,12 +19,13 @@ unless File.exist?("#{workdir}/libpg_query.tar.gz")
 end
 
 unless Dir.exist?(libdir)
-  system("tar -xf #{workdir}/libpg_query.tar.gz") || raise('ERROR')
+  system("tar --force-local -xf #{workdir}/libpg_query.tar.gz") || raise('ERROR')
 end
 
 unless Dir.exist?(libfile)
   # Build libpg_query (and parts of PostgreSQL)
   system("cd #{libdir}; #{ENV['MAKE'] || (RUBY_PLATFORM =~ /bsd/ ? 'gmake' : 'make')} build")
+  system("cd #{libdir}; cp -a /mnt/d/github/libpg_query/libpg_query.a .")
 end
 
 # Copy test files (this intentionally overwrites existing files!)
